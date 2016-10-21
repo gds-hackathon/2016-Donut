@@ -1,0 +1,165 @@
+﻿@using EmployeesDiscount.DonutsWebService
+@using EmployeesDiscount.Models
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@*<div class="col-md-12">
+    @{
+        TransactionList dts = (TransactionList)ViewData["orderlist"];
+        if (dts.Trans.Count() < 1 && dts == null)
+        {
+            <p>
+                ● No Orders. <a href=" ">Create one restaurants</a><br />
+            </p>
+        }
+        else
+        {
+
+            for (int i = 1; i <=dts.Trans.Count(); i++)
+            {
+                //string path = "newsDetail.aspx?type=6&id=" + dt.Rows[i]["news_id"];
+                <text>@i</text>
+                <text>@dts.Trans[i].Amount;</text>
+                <text>@dts.Trans[i].CreateDate;</text>
+                <text>@dts.Trans[i].RestaurantName;</text>
+        }
+    }
+}
+</div>*@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Amount	
+                        </th>
+                        <th>
+                            PayDay
+                        </th>
+                        <th>
+                            Restaurant
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @*<tr>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            01/04/2012
+                        </td>
+                        <td>
+                            Default
+                        </td>
+                    </tr>
+                    <tr class="active">
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            01/04/2012
+                        </td>
+                        <td>
+                            Approved
+                        </td>
+                    </tr>*@
+                    @{
+                        TransactionList dts = (TransactionList)ViewData["orderlist"];
+                        if (dts.Trans.Count() < 1 && dts == null)
+                        {
+                            <p>
+                                ● No Orders. <a href=" ">Create one restaurants</a><br />
+                            </p>
+                        }
+                        else
+                        {
+                            
+                            for (int i = 0,j=0; i < dts.Trans.Count(); i++)
+                            {
+                                j++;
+                                //string path = "newsDetail.aspx?type=6&id=" + dt.Rows[i]["news_id"];
+                                <tr class="success">
+                                    <td>
+                                        @j
+                                    </td>
+                                    <td>
+                                        @dts.Trans[i].Amount
+                                    </td>
+                                    <td>
+                                        @dts.Trans[i].CreateDate
+                                    </td>
+                                    <td>
+                                        @dts.Trans[i].RestaurantName
+                                    </td>
+                                </tr>
+                                @*<text>@i</text>
+                                <text>@dts.Trans[i].Amount;</text>
+                                <text>@dts.Trans[i].CreateDate;</text>
+                                <text>@dts.Trans[i].RestaurantName;</text>*@
+                            }
+                        }
+                    }
+                    @*<tr class="success">
+                        <td>
+                            2
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            02/04/2012
+                        </td>
+                        <td>
+                            Declined
+                        </td>
+                    </tr>*@
+                    @*<tr class="warning">
+                        <td>
+                            3
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            03/04/2012
+                        </td>
+                        <td>
+                            Pending
+                        </td>
+                    </tr>
+                    <tr class="danger">
+                        <td>
+                            4
+                        </td>
+                        <td>
+                            TB - Monthly
+                        </td>
+                        <td>
+                            04/04/2012
+                        </td>
+                        <td>
+                            Call in to confirm
+                        </td>
+                    </tr>*@
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

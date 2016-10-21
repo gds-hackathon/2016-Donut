@@ -16,7 +16,7 @@ namespace EmployeesDiscount.Controllers
         [AllowAnonymous]
         public ActionResult Restaurants()
         {
-            var restanrantslist = webservice.GetRestaurant(10);
+            var restanrantslist = webservice.GetRestaurant();
             ViewData["restanrantslist"] = restanrantslist;
             return View("Restaurants");
         }
@@ -31,15 +31,37 @@ namespace EmployeesDiscount.Controllers
             return View();
         }
 
-        // POST: /Restaurants/Payment
+        // POST: /Restaurants/PaymentPost
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult PaymentPost(PaymentViewModel model, string returnUrl)
+        public ActionResult Payment(PaymentViewModel model, string returnUrl)
         {
-            var restanrantslist = webservice.InsertPaymentTransaction(Convert.ToDouble(model.PaymentAmount), Convert.ToInt32(Session["Restaurantkey"]), Convert.ToInt32(Session["UserKey"]));
+            var res = webservice.InsertPaymentTransaction(Convert.ToDouble(model.PaymentAmount), Convert.ToInt32(Session["Restaurantkey"]), Convert.ToInt32(Session["UserKey"]));
             //ViewData["restanrantslist"] = restanrantslist;
-            return View("Restaurants");
+            if (res != 0)
+            {
+                return new RedirectResult("/Restaurants/Restaurants");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid order");
+                return View(model);
+            }
+        }
+
+        // GET: Orders
+        [AllowAnonymous]
+        public ActionResult Orders()
+        {
+            var orderlist = webservice.GetTransactionsPerUser(Convert.ToInt32(Session["UserKey"]));
+            ViewData["orderlist"] = orderlist;
+            return View();
+        }
+
+        public ActionResult Success()
+        {
+            return View("Success");
         }
     }
 }

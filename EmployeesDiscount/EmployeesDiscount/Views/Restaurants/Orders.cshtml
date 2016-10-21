@@ -7,7 +7,7 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<div class="col-md-12">
+@*<div class="col-md-12">
     @{
         TransactionList dts = (TransactionList)ViewData["orderlist"];
         if (dts.Trans.Count() < 1 && dts == null)
@@ -19,19 +19,19 @@
         else
         {
 
-            for (int i = 0; i < dts.Trans.Count(); i++)
+            for (int i = 1; i <=dts.Trans.Count(); i++)
             {
                 //string path = "newsDetail.aspx?type=6&id=" + dt.Rows[i]["news_id"];
-                <text>i</text><br />
-                <text>@dts.Trans[i].Amount;</text><br />
-                <text>@dts.Trans[i].CreateDate;</text><br />
-                <text>@dts.Trans[i].RestaurantName;</text><br />
+                <text>@i</text>
+                <text>@dts.Trans[i].Amount;</text>
+                <text>@dts.Trans[i].CreateDate;</text>
+                <text>@dts.Trans[i].RestaurantName;</text>
         }
     }
 }
-</div>
+</div>*@
 
-@*<div class="container-fluid">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <table class="table">
@@ -52,7 +52,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    @*<tr>
                         <td>
                             1
                         </td>
@@ -79,8 +79,44 @@
                         <td>
                             Approved
                         </td>
-                    </tr>
-                    <tr class="success">
+                    </tr>*@
+                    @{
+                        TransactionList dts = (TransactionList)ViewData["orderlist"];
+                        if (dts.Trans.Count() < 1 && dts == null)
+                        {
+                            <p>
+                                ● No Orders. <a href=" ">Create one restaurants</a><br />
+                            </p>
+                        }
+                        else
+                        {
+                            
+                            for (int i = 0,j=0; i < dts.Trans.Count(); i++)
+                            {
+                                j++;
+                                //string path = "newsDetail.aspx?type=6&id=" + dt.Rows[i]["news_id"];
+                                <tr class="success">
+                                    <td>
+                                        @j
+                                    </td>
+                                    <td>
+                                        @dts.Trans[i].Amount
+                                    </td>
+                                    <td>
+                                        @dts.Trans[i].CreateDate
+                                    </td>
+                                    <td>
+                                        @dts.Trans[i].RestaurantName
+                                    </td>
+                                </tr>
+                                @*<text>@i</text>
+                                <text>@dts.Trans[i].Amount;</text>
+                                <text>@dts.Trans[i].CreateDate;</text>
+                                <text>@dts.Trans[i].RestaurantName;</text>*@
+                            }
+                        }
+                    }
+                    @*<tr class="success">
                         <td>
                             2
                         </td>
@@ -93,8 +129,8 @@
                         <td>
                             Declined
                         </td>
-                    </tr>
-                    <tr class="warning">
+                    </tr>*@
+                    @*<tr class="warning">
                         <td>
                             3
                         </td>
@@ -121,9 +157,9 @@
                         <td>
                             Call in to confirm
                         </td>
-                    </tr>
+                    </tr>*@
                 </tbody>
             </table>
         </div>
     </div>
-</div>*@
+</div>

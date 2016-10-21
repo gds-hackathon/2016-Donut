@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace EmployeesDiscount.DonutsWebService {
+namespace Restaurants2GD.localhost {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -48,7 +48,7 @@ namespace EmployeesDiscount.DonutsWebService {
         
         /// <remarks/>
         public RestaurantS2GD() {
-            this.Url = global::EmployeesDiscount.Properties.Settings.Default.EmployeesDiscount_DonutsWebService_RestaurantS2GD;
+            this.Url = global::Restaurants2GD.Properties.Settings.Default.Restaurants2GD_localhost_RestaurantS2GD;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

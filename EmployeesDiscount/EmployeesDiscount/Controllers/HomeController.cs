@@ -27,10 +27,10 @@ namespace EmployeesDiscount.Controllers
             return View();
         }
 
-        public ActionResult Orders()
-        {
-            ViewBag.Message = "My Orders";
-            return View();
-        }
+        //public ActionResult Orders()
+        //{
+        //    ViewBag.Message = "My Orders";
+        //    return View();
+        //}
     }
 }

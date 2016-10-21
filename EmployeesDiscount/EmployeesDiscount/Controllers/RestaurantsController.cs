@@ -16,7 +16,7 @@ namespace EmployeesDiscount.Controllers
         [AllowAnonymous]
         public ActionResult Restaurants()
         {
-            var restanrantslist = webservice.GetRestaurant(10);
+            var restanrantslist = webservice.GetRestaurant();
             ViewData["restanrantslist"] = restanrantslist;
             return View("Restaurants");
         }
@@ -54,10 +54,14 @@ namespace EmployeesDiscount.Controllers
         [AllowAnonymous]
         public ActionResult Orders()
         {
-            int i = 10;
-            var orderlist = webservice.GetTransactionsPerUser(Convert.ToInt32(Session["UserKey"]),ref i);
+            var orderlist = webservice.GetTransactionsPerUser(Convert.ToInt32(Session["UserKey"]));
             ViewData["orderlist"] = orderlist;
             return View();
+        }
+
+        public ActionResult Success()
+        {
+            return View("Success");
         }
     }
 }

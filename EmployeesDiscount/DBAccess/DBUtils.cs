@@ -146,5 +146,21 @@ namespace DBAccess
                 return "0";
             }
         }
+
+        public DataTable CallGetRestaurantList(int count)
+        {
+            
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("getRestaurantList", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                MySqlParameter parInOutput = cmd.Parameters.Add("@count", MySqlDbType.Int16);  //定义输出参数  
+                parInOutput.Direction = ParameterDirection.InputOutput;  //参数类型为Output  
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                con.Close();
+                return dt;
+            
+          }
     }
 }

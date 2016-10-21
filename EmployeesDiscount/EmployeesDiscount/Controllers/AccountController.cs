@@ -85,7 +85,10 @@ namespace EmployeesDiscount.Controllers
             if (Convert.ToInt32(result) > 0)
             {
                 //Session["UserName"] = model.
-                return RedirectToLocal(returnUrl);
+                //Response.Redirect("RestautantsController/RestautantsList");
+                RestautantsViewModel res = new RestautantsViewModel();
+                return new RedirectResult("/Restautants/RestautantsList");
+                //return View(res);
             }
             else
             {

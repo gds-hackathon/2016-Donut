@@ -171,7 +171,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\RestautantsController.cs" />
+    <Compile Include="Controllers\RestaurantsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,11 +217,14 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web References\DonutsWebService\Reference.map">
+    <None Include="Web References\DonutsWebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\Restaurants\RestaurantsView.cshtml" />
+    <Content Include="Web References\DonutsWebService\Restaurant.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Views\Restaurant\RestautantsView.cshtml" />
     <None Include="Web References\DonutsWebService\Restaurants2GD.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -264,7 +267,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Restautants\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

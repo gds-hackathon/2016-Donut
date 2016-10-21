@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EmployeesDiscount.DonutsWebService;
+using EmployeesDiscount.Models;
 
 namespace EmployeesDiscount.Controllers
 {
@@ -34,9 +35,9 @@ namespace EmployeesDiscount.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult PaymentPost(int restaurantkey)
+        public ActionResult PaymentPost(PaymentViewModel model, string returnUrl)
         {
-            //var restanrantslist = webservice.GetRestaurant(10);
+            var restanrantslist = webservice.InsertPaymentTransaction(Convert.ToDouble(model.PaymentAmount), Convert.ToInt32(Session["Restaurantkey"]), Convert.ToInt32(Session["UserKey"]));
             //ViewData["restanrantslist"] = restanrantslist;
             return View("Restaurants");
         }

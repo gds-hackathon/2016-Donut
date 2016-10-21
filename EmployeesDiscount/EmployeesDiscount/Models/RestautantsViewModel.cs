@@ -16,4 +16,11 @@ namespace EmployeesDiscount.Models
             public string Discount { get; set; }
 
     }
+
+    public class PaymentViewModel
+    {
+        [Required]
+        [Display(Name = "Payment Amount")]
+        public string PaymentAmount { get; set; }
+    }
 }

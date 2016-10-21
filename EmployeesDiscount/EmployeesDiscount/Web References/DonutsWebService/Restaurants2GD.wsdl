@@ -110,14 +110,65 @@
         </s:sequence>
       </s:complexType>
       <s:complexType name="Transaction">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="TransactionNumber" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="RestaurantName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="EmployeeName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CreateDate" type="s:string" />
-        </s:sequence>
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Restaurant">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TransactionNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RestaurantName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EmployeeName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateDate" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
       </s:complexType>
+      <s:element name="GetTransactionsPerUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="customerkey" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTransactionsPerUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTransactionsPerUserResult" type="tns:TransactionList" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPaymentTransaction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="restaurantkey" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="customerkey" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPaymentTransactionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertPaymentTransactionResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertRestaurant">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="discount" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertRestaurantResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertRestaurantResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="RegistrationSoapIn">
@@ -144,6 +195,24 @@
   <wsdl:message name="GetTransactionsPerRestaurantSoapOut">
     <wsdl:part name="parameters" element="tns:GetTransactionsPerRestaurantResponse" />
   </wsdl:message>
+  <wsdl:message name="GetTransactionsPerUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTransactionsPerUser" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionsPerUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTransactionsPerUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertPaymentTransactionSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPaymentTransaction" />
+  </wsdl:message>
+  <wsdl:message name="InsertPaymentTransactionSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPaymentTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertRestaurantSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertRestaurant" />
+  </wsdl:message>
+  <wsdl:message name="InsertRestaurantSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertRestaurantResponse" />
+  </wsdl:message>
   <wsdl:portType name="RestaurantS2GDSoap">
     <wsdl:operation name="Registration">
       <wsdl:input message="tns:RegistrationSoapIn" />
@@ -160,6 +229,18 @@
     <wsdl:operation name="GetTransactionsPerRestaurant">
       <wsdl:input message="tns:GetTransactionsPerRestaurantSoapIn" />
       <wsdl:output message="tns:GetTransactionsPerRestaurantSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionsPerUser">
+      <wsdl:input message="tns:GetTransactionsPerUserSoapIn" />
+      <wsdl:output message="tns:GetTransactionsPerUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaymentTransaction">
+      <wsdl:input message="tns:InsertPaymentTransactionSoapIn" />
+      <wsdl:output message="tns:InsertPaymentTransactionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertRestaurant">
+      <wsdl:input message="tns:InsertRestaurantSoapIn" />
+      <wsdl:output message="tns:InsertRestaurantSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="RestaurantS2GDSoap" type="tns:RestaurantS2GDSoap">
@@ -200,6 +281,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTransactionsPerUser">
+      <soap:operation soapAction="http://tempuri.org/GetTransactionsPerUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaymentTransaction">
+      <soap:operation soapAction="http://tempuri.org/InsertPaymentTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRestaurant">
+      <soap:operation soapAction="http://tempuri.org/InsertRestaurant" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="RestaurantS2GDSoap12" type="tns:RestaurantS2GDSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -232,6 +340,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetTransactionsPerRestaurant">
       <soap12:operation soapAction="http://tempuri.org/GetTransactionsPerRestaurant" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionsPerUser">
+      <soap12:operation soapAction="http://tempuri.org/GetTransactionsPerUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaymentTransaction">
+      <soap12:operation soapAction="http://tempuri.org/InsertPaymentTransaction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRestaurant">
+      <soap12:operation soapAction="http://tempuri.org/InsertRestaurant" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

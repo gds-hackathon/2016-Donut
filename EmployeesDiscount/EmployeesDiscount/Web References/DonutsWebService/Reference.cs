@@ -38,6 +38,12 @@ namespace EmployeesDiscount.DonutsWebService {
         
         private System.Threading.SendOrPostCallback GetTransactionsPerRestaurantOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetTransactionsPerUserOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsertPaymentTransactionOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsertRestaurantOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -87,6 +93,15 @@ namespace EmployeesDiscount.DonutsWebService {
         
         /// <remarks/>
         public event GetTransactionsPerRestaurantCompletedEventHandler GetTransactionsPerRestaurantCompleted;
+        
+        /// <remarks/>
+        public event GetTransactionsPerUserCompletedEventHandler GetTransactionsPerUserCompleted;
+        
+        /// <remarks/>
+        public event InsertPaymentTransactionCompletedEventHandler InsertPaymentTransactionCompleted;
+        
+        /// <remarks/>
+        public event InsertRestaurantCompletedEventHandler InsertRestaurantCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Registration", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -214,6 +229,102 @@ namespace EmployeesDiscount.DonutsWebService {
             if ((this.GetTransactionsPerRestaurantCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetTransactionsPerRestaurantCompleted(this, new GetTransactionsPerRestaurantCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTransactionsPerUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public TransactionList GetTransactionsPerUser(int customerkey, ref int count) {
+            object[] results = this.Invoke("GetTransactionsPerUser", new object[] {
+                        customerkey,
+                        count});
+            count = ((int)(results[1]));
+            return ((TransactionList)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTransactionsPerUserAsync(int customerkey, int count) {
+            this.GetTransactionsPerUserAsync(customerkey, count, null);
+        }
+        
+        /// <remarks/>
+        public void GetTransactionsPerUserAsync(int customerkey, int count, object userState) {
+            if ((this.GetTransactionsPerUserOperationCompleted == null)) {
+                this.GetTransactionsPerUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTransactionsPerUserOperationCompleted);
+            }
+            this.InvokeAsync("GetTransactionsPerUser", new object[] {
+                        customerkey,
+                        count}, this.GetTransactionsPerUserOperationCompleted, userState);
+        }
+        
+        private void OnGetTransactionsPerUserOperationCompleted(object arg) {
+            if ((this.GetTransactionsPerUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTransactionsPerUserCompleted(this, new GetTransactionsPerUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertPaymentTransaction", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int InsertPaymentTransaction(double amount, int restaurantkey, int customerkey) {
+            object[] results = this.Invoke("InsertPaymentTransaction", new object[] {
+                        amount,
+                        restaurantkey,
+                        customerkey});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertPaymentTransactionAsync(double amount, int restaurantkey, int customerkey) {
+            this.InsertPaymentTransactionAsync(amount, restaurantkey, customerkey, null);
+        }
+        
+        /// <remarks/>
+        public void InsertPaymentTransactionAsync(double amount, int restaurantkey, int customerkey, object userState) {
+            if ((this.InsertPaymentTransactionOperationCompleted == null)) {
+                this.InsertPaymentTransactionOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPaymentTransactionOperationCompleted);
+            }
+            this.InvokeAsync("InsertPaymentTransaction", new object[] {
+                        amount,
+                        restaurantkey,
+                        customerkey}, this.InsertPaymentTransactionOperationCompleted, userState);
+        }
+        
+        private void OnInsertPaymentTransactionOperationCompleted(object arg) {
+            if ((this.InsertPaymentTransactionCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertPaymentTransactionCompleted(this, new InsertPaymentTransactionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertRestaurant", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int InsertRestaurant(string name, string discount) {
+            object[] results = this.Invoke("InsertRestaurant", new object[] {
+                        name,
+                        discount});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertRestaurantAsync(string name, string discount) {
+            this.InsertRestaurantAsync(name, discount, null);
+        }
+        
+        /// <remarks/>
+        public void InsertRestaurantAsync(string name, string discount, object userState) {
+            if ((this.InsertRestaurantOperationCompleted == null)) {
+                this.InsertRestaurantOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertRestaurantOperationCompleted);
+            }
+            this.InvokeAsync("InsertRestaurant", new object[] {
+                        name,
+                        discount}, this.InsertRestaurantOperationCompleted, userState);
+        }
+        
+        private void OnInsertRestaurantOperationCompleted(object arg) {
+            if ((this.InsertRestaurantCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertRestaurantCompleted(this, new InsertRestaurantCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -381,7 +492,40 @@ namespace EmployeesDiscount.DonutsWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Transaction {
+    public partial class TransactionList {
+        
+        private Transaction[] transField;
+        
+        private int returnCountField;
+        
+        /// <remarks/>
+        public Transaction[] Trans {
+            get {
+                return this.transField;
+            }
+            set {
+                this.transField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ReturnCount {
+            get {
+                return this.returnCountField;
+            }
+            set {
+                this.returnCountField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Transaction : Restaurant {
         
         private string transactionNumberField;
         
@@ -445,39 +589,7 @@ namespace EmployeesDiscount.DonutsWebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class TransactionList {
-        
-        private Transaction[] transField;
-        
-        private int returnCountField;
-        
-        /// <remarks/>
-        public Transaction[] Trans {
-            get {
-                return this.transField;
-            }
-            set {
-                this.transField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int ReturnCount {
-            get {
-                return this.returnCountField;
-            }
-            set {
-                this.returnCountField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Transaction))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -618,6 +730,92 @@ namespace EmployeesDiscount.DonutsWebService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
+    public delegate void GetTransactionsPerUserCompletedEventHandler(object sender, GetTransactionsPerUserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTransactionsPerUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTransactionsPerUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public TransactionList Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((TransactionList)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public int count {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
+    public delegate void InsertPaymentTransactionCompletedEventHandler(object sender, InsertPaymentTransactionCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertPaymentTransactionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertPaymentTransactionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
+    public delegate void InsertRestaurantCompletedEventHandler(object sender, InsertRestaurantCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertRestaurantCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertRestaurantCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

@@ -4,3 +4,9 @@ D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\MySql.Data.dll
 D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.csprojResolveAssemblyReference.cache
 D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.dll
 D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.pdb
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\DBAccess.dll
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\DBAccess.pdb
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\MySql.Data.dll
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.csprojResolveAssemblyReference.cache
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.dll
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.pdb

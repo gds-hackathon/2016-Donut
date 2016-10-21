@@ -51,5 +51,13 @@ namespace Restaurants2GD
             int res = du.CallRegistration(firstname, lastname, email, phone, password);
             return res;
         }
+
+        [WebMethod]
+        public string Login(string userName, string passwd)
+        {
+            DBUtils du = new DBUtils();
+            string res = du.CallLogin(userName,passwd);
+            return res;
+        }
     }
 }

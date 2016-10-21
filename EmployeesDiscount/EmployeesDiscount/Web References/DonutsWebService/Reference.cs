@@ -27,17 +27,16 @@ namespace EmployeesDiscount.DonutsWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="RestaurantS2GDSoap", Namespace="http://tempuri.org/")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(User))]
     public partial class RestaurantS2GD : System.Web.Services.Protocols.SoapHttpClientProtocol {
-        
-        private System.Threading.SendOrPostCallback HelloWorldOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetUsersOperationCompleted;
         
         private System.Threading.SendOrPostCallback RegistrationOperationCompleted;
         
         private System.Threading.SendOrPostCallback LoginOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetRestaurantOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetTransactionsPerRestaurantOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -78,12 +77,6 @@ namespace EmployeesDiscount.DonutsWebService {
         }
         
         /// <remarks/>
-        public event HelloWorldCompletedEventHandler HelloWorldCompleted;
-        
-        /// <remarks/>
-        public event GetUsersCompletedEventHandler GetUsersCompleted;
-        
-        /// <remarks/>
         public event RegistrationCompletedEventHandler RegistrationCompleted;
         
         /// <remarks/>
@@ -93,58 +86,7 @@ namespace EmployeesDiscount.DonutsWebService {
         public event GetRestaurantCompletedEventHandler GetRestaurantCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string HelloWorld() {
-            object[] results = this.Invoke("HelloWorld", new object[0]);
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void HelloWorldAsync() {
-            this.HelloWorldAsync(null);
-        }
-        
-        /// <remarks/>
-        public void HelloWorldAsync(object userState) {
-            if ((this.HelloWorldOperationCompleted == null)) {
-                this.HelloWorldOperationCompleted = new System.Threading.SendOrPostCallback(this.OnHelloWorldOperationCompleted);
-            }
-            this.InvokeAsync("HelloWorld", new object[0], this.HelloWorldOperationCompleted, userState);
-        }
-        
-        private void OnHelloWorldOperationCompleted(object arg) {
-            if ((this.HelloWorldCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.HelloWorldCompleted(this, new HelloWorldCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetUsers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public User[] GetUsers() {
-            object[] results = this.Invoke("GetUsers", new object[0]);
-            return ((User[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetUsersAsync() {
-            this.GetUsersAsync(null);
-        }
-        
-        /// <remarks/>
-        public void GetUsersAsync(object userState) {
-            if ((this.GetUsersOperationCompleted == null)) {
-                this.GetUsersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetUsersOperationCompleted);
-            }
-            this.InvokeAsync("GetUsers", new object[0], this.GetUsersOperationCompleted, userState);
-        }
-        
-        private void OnGetUsersOperationCompleted(object arg) {
-            if ((this.GetUsersCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetUsersCompleted(this, new GetUsersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
+        public event GetTransactionsPerRestaurantCompletedEventHandler GetTransactionsPerRestaurantCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Registration", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -185,11 +127,11 @@ namespace EmployeesDiscount.DonutsWebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Login", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string Login(string userName, string passwd) {
+        public Cusomer Login(string userName, string passwd) {
             object[] results = this.Invoke("Login", new object[] {
                         userName,
                         passwd});
-            return ((string)(results[0]));
+            return ((Cusomer)(results[0]));
         }
         
         /// <remarks/>
@@ -244,6 +186,38 @@ namespace EmployeesDiscount.DonutsWebService {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTransactionsPerRestaurant", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public TransactionList GetTransactionsPerRestaurant(int restaurantKey, ref int count) {
+            object[] results = this.Invoke("GetTransactionsPerRestaurant", new object[] {
+                        restaurantKey,
+                        count});
+            count = ((int)(results[1]));
+            return ((TransactionList)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTransactionsPerRestaurantAsync(int restaurantKey, int count) {
+            this.GetTransactionsPerRestaurantAsync(restaurantKey, count, null);
+        }
+        
+        /// <remarks/>
+        public void GetTransactionsPerRestaurantAsync(int restaurantKey, int count, object userState) {
+            if ((this.GetTransactionsPerRestaurantOperationCompleted == null)) {
+                this.GetTransactionsPerRestaurantOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTransactionsPerRestaurantOperationCompleted);
+            }
+            this.InvokeAsync("GetTransactionsPerRestaurant", new object[] {
+                        restaurantKey,
+                        count}, this.GetTransactionsPerRestaurantOperationCompleted, userState);
+        }
+        
+        private void OnGetTransactionsPerRestaurantOperationCompleted(object arg) {
+            if ((this.GetTransactionsPerRestaurantCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTransactionsPerRestaurantCompleted(this, new GetTransactionsPerRestaurantCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -263,6 +237,88 @@ namespace EmployeesDiscount.DonutsWebService {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Cusomer : User {
+        
+        private string firstNameField;
+        
+        private string lastNameField;
+        
+        private string emailField;
+        
+        private string mobileField;
+        
+        private double balanceAmountField;
+        
+        private double frozenAmountField;
+        
+        /// <remarks/>
+        public string FirstName {
+            get {
+                return this.firstNameField;
+            }
+            set {
+                this.firstNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string LastName {
+            get {
+                return this.lastNameField;
+            }
+            set {
+                this.lastNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Mobile {
+            get {
+                return this.mobileField;
+            }
+            set {
+                this.mobileField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double BalanceAmount {
+            get {
+                return this.balanceAmountField;
+            }
+            set {
+                this.balanceAmountField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double FrozenAmount {
+            get {
+                return this.frozenAmountField;
+            }
+            set {
+                this.frozenAmountField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Cusomer))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -325,6 +381,108 @@ namespace EmployeesDiscount.DonutsWebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Transaction {
+        
+        private string transactionNumberField;
+        
+        private string restaurantNameField;
+        
+        private string employeeNameField;
+        
+        private string amountField;
+        
+        private string createDateField;
+        
+        /// <remarks/>
+        public string TransactionNumber {
+            get {
+                return this.transactionNumberField;
+            }
+            set {
+                this.transactionNumberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string RestaurantName {
+            get {
+                return this.restaurantNameField;
+            }
+            set {
+                this.restaurantNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EmployeeName {
+            get {
+                return this.employeeNameField;
+            }
+            set {
+                this.employeeNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Amount {
+            get {
+                return this.amountField;
+            }
+            set {
+                this.amountField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class TransactionList {
+        
+        private Transaction[] transField;
+        
+        private int returnCountField;
+        
+        /// <remarks/>
+        public Transaction[] Trans {
+            get {
+                return this.transField;
+            }
+            set {
+                this.transField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int ReturnCount {
+            get {
+                return this.returnCountField;
+            }
+            set {
+                this.returnCountField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class Restaurant {
         
         private string nameField;
@@ -348,58 +506,6 @@ namespace EmployeesDiscount.DonutsWebService {
             }
             set {
                 this.discountField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
-    public delegate void HelloWorldCompletedEventHandler(object sender, HelloWorldCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class HelloWorldCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal HelloWorldCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
-    public delegate void GetUsersCompletedEventHandler(object sender, GetUsersCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetUsersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetUsersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public User[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((User[])(this.results[0]));
             }
         }
     }
@@ -448,10 +554,10 @@ namespace EmployeesDiscount.DonutsWebService {
         }
         
         /// <remarks/>
-        public string Result {
+        public Cusomer Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((Cusomer)(this.results[0]));
             }
         }
     }
@@ -478,6 +584,40 @@ namespace EmployeesDiscount.DonutsWebService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Restaurant[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
+    public delegate void GetTransactionsPerRestaurantCompletedEventHandler(object sender, GetTransactionsPerRestaurantCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTransactionsPerRestaurantCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTransactionsPerRestaurantCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public TransactionList Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((TransactionList)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public int count {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[1]));
             }
         }
     }

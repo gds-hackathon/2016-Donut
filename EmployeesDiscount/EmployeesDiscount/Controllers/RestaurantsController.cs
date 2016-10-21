@@ -20,11 +20,21 @@ namespace EmployeesDiscount.Controllers
             return View("Restaurants");
         }
 
+        // Get: /Restaurants/Payment
+        [AllowAnonymous]
+        public ActionResult Payment(int Id)
+        {
+            Session["Restaurantkey"] = Id;
+            //var restanrantslist = webservice.GetRestaurant(10);
+            //ViewData["restanrantslist"] = restanrantslist;
+            return View();
+        }
+
         // POST: /Restaurants/Payment
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Payment()
+        public ActionResult PaymentPost(int restaurantkey)
         {
             //var restanrantslist = webservice.GetRestaurant(10);
             //ViewData["restanrantslist"] = restanrantslist;

@@ -2,39 +2,6 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="HelloWorld">
-        <s:complexType />
-      </s:element>
-      <s:element name="HelloWorldResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetUsers">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetUsersResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetUsersResult" type="tns:ArrayOfUser" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfUser">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="User">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Customerkey" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="LevelKey" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="Registration">
         <s:complexType>
           <s:sequence>
@@ -64,10 +31,32 @@
       <s:element name="LoginResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:Cusomer" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="Cusomer">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:User">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="BalanceAmount" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="FrozenAmount" type="s:double" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Customerkey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LevelKey" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetRestaurant">
         <s:complexType>
           <s:sequence>
@@ -93,20 +82,44 @@
           <s:element minOccurs="0" maxOccurs="1" name="Discount" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetTransactionsPerRestaurant">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="restaurantKey" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTransactionsPerRestaurantResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTransactionsPerRestaurantResult" type="tns:TransactionList" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TransactionList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Trans" type="tns:ArrayOfTransaction" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnCount" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTransaction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Transaction" nillable="true" type="tns:Transaction" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Transaction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RestaurantName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreateDate" type="s:string" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="HelloWorldSoapIn">
-    <wsdl:part name="parameters" element="tns:HelloWorld" />
-  </wsdl:message>
-  <wsdl:message name="HelloWorldSoapOut">
-    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetUsersSoapIn">
-    <wsdl:part name="parameters" element="tns:GetUsers" />
-  </wsdl:message>
-  <wsdl:message name="GetUsersSoapOut">
-    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
-  </wsdl:message>
   <wsdl:message name="RegistrationSoapIn">
     <wsdl:part name="parameters" element="tns:Registration" />
   </wsdl:message>
@@ -125,15 +138,13 @@
   <wsdl:message name="GetRestaurantSoapOut">
     <wsdl:part name="parameters" element="tns:GetRestaurantResponse" />
   </wsdl:message>
+  <wsdl:message name="GetTransactionsPerRestaurantSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTransactionsPerRestaurant" />
+  </wsdl:message>
+  <wsdl:message name="GetTransactionsPerRestaurantSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTransactionsPerRestaurantResponse" />
+  </wsdl:message>
   <wsdl:portType name="RestaurantS2GDSoap">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldSoapIn" />
-      <wsdl:output message="tns:HelloWorldSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetUsers">
-      <wsdl:input message="tns:GetUsersSoapIn" />
-      <wsdl:output message="tns:GetUsersSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="Registration">
       <wsdl:input message="tns:RegistrationSoapIn" />
       <wsdl:output message="tns:RegistrationSoapOut" />
@@ -146,27 +157,13 @@
       <wsdl:input message="tns:GetRestaurantSoapIn" />
       <wsdl:output message="tns:GetRestaurantSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetTransactionsPerRestaurant">
+      <wsdl:input message="tns:GetTransactionsPerRestaurantSoapIn" />
+      <wsdl:output message="tns:GetTransactionsPerRestaurantSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="RestaurantS2GDSoap" type="tns:RestaurantS2GDSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUsers">
-      <soap:operation soapAction="http://tempuri.org/GetUsers" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Registration">
       <soap:operation soapAction="http://tempuri.org/Registration" style="document" />
       <wsdl:input>
@@ -194,27 +191,18 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTransactionsPerRestaurant">
+      <soap:operation soapAction="http://tempuri.org/GetTransactionsPerRestaurant" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="RestaurantS2GDSoap12" type="tns:RestaurantS2GDSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetUsers">
-      <soap12:operation soapAction="http://tempuri.org/GetUsers" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="Registration">
       <soap12:operation soapAction="http://tempuri.org/Registration" style="document" />
       <wsdl:input>
@@ -235,6 +223,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetRestaurant">
       <soap12:operation soapAction="http://tempuri.org/GetRestaurant" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionsPerRestaurant">
+      <soap12:operation soapAction="http://tempuri.org/GetTransactionsPerRestaurant" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

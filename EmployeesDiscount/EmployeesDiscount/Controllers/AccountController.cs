@@ -82,9 +82,9 @@ namespace EmployeesDiscount.Controllers
             CommonMethod com = new CommonMethod();
             model.Password = com.Encryption(model.Password);
             var result = webservice.Login(model.PhoneNumber, model.Password);
-            if (Convert.ToInt32(result) > 0)
+            if (result != null)
             {
-                //Session["UserName"] = model.
+                Session["UserName"] = result.FirstName + " " + result.LastName;
                 //Response.Redirect("RestautantsController/RestautantsList");
                 RestautantsViewModel res = new RestautantsViewModel();
                 return new RedirectResult("/Restaurants/Restaurants");

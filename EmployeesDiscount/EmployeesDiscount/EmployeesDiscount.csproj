@@ -217,6 +217,10 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Web References\DonutsWebService\Cusomer.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Views\Restaurants\Payment.cshtml" />
     <None Include="Web References\DonutsWebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -261,7 +265,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="Web References\DonutsWebService\Restaurants2GD.wsdl" />
-    <Content Include="Web References\DonutsWebService\User.datasource">
+    <Content Include="Web References\DonutsWebService\TransactionList.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
   </ItemGroup>

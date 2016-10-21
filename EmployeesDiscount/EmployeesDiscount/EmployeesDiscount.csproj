@@ -221,6 +221,7 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <Content Include="Views\Restaurants\Payment.cshtml" />
+    <Content Include="Views\Home\Orders.cshtml" />
     <None Include="Web References\DonutsWebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

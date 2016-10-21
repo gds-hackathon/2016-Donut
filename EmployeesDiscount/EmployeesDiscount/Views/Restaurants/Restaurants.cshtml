@@ -1,0 +1,64 @@
+﻿@using EmployeesDiscount.DonutsWebService
+@using EmployeesDiscount.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Restaurant";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+    <div class="col-md-8">
+       @{
+           Restaurant[] dts = (Restaurant[])ViewData["restanrantslist"];
+           if (dts.Count() < 1 && dts == null)
+           {
+            <p>
+                ● No restaurants. <a href="#">Create one restaurants</a><br />
+            </p>
+           }
+           else
+           {
+
+               for (int i = 0; i < dts.Count(); i++)
+               {
+                   //string path = "newsDetail.aspx?type=6&id=" + dt.Rows[i]["news_id"];
+                   <text>@dts[i].Name;</text>
+                   <text>@dts[i].Discount;</text><br />
+
+        }
+
+    }
+}         
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-group" id="panel-3285">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-3285" href=" ">Restaurant1</a>
+                        </div>
+                        <div id="panel-element-841127" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Discount 10%
+                            </div>
+                            <p>@Html.ActionLink("Pay Bill Now", "About", "Home")</p>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-3285" href="#panel-element-876314">Restaurant2</a>
+                        </div>
+                        <div id="panel-element-876314" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Discount 6%
+                            </div>
+                            <p><a class="btn btn-default" href="http://www.baidu.com">Pay Bill Now &raquo;</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

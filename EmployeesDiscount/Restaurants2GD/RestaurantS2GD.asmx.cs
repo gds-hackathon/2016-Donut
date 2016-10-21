@@ -21,29 +21,29 @@ namespace Restaurants2GD
     public class RestaurantS2GD : System.Web.Services.WebService
     {
 
-        [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
+        //[WebMethod]
+        //public string HelloWorld()
+        //{
+        //    return "Hello World";
+        //}
 
 
-        [WebMethod]
-        public List<User> GetUsers()
-        {
+        //[WebMethod]
+        //public List<User> GetUsers()
+        //{
            
-            List<User> ls_user = new List<User>();
-            DBUtils du = new DBUtils();
-            DataTable dt= du.GetTableByQuery("select * from user");
-            foreach (DataRow dr in dt.Rows)
-            {
-                User user = new User();
-                user.UserName = dr["userName"].ToString();
-                ls_user.Add(user);
-            }
+        //    List<User> ls_user = new List<User>();
+        //    DBUtils du = new DBUtils();
+        //    DataTable dt= du.GetTableByQuery("select * from user");
+        //    foreach (DataRow dr in dt.Rows)
+        //    {
+        //        User user = new User();
+        //        user.UserName = dr["userName"].ToString();
+        //        ls_user.Add(user);
+        //    }
 
-            return ls_user;
-        }
+        //    return ls_user;
+        //}
 
         [WebMethod]
         public int Registration(string firstname, string lastname, string email, string phone, string password)
@@ -54,11 +54,21 @@ namespace Restaurants2GD
         }
 
         [WebMethod]
-        public string Login(string userName, string passwd)
+        public Cusomer Login(string userName, string passwd)
         {
+            Cusomer customer = new Cusomer();
             DBUtils du = new DBUtils();
-            string res = du.CallLogin(userName,passwd);
-            return res;
+            DataTable dt = du.CallLogin(userName,passwd);
+            foreach (DataRow dr in dt.Rows)
+            {
+                customer.FirstName = dr["FirstName"].ToString();
+                customer.LastName = dr["LastName"].ToString();
+                customer.Email = dr["Email"].ToString();
+                customer.Mobile = dr["Mobile"].ToString();
+                customer.BalanceAmount = double.Parse(dr["Balance"].ToString());
+                customer.FrozenAmount = double.Parse(dr["FrozenAmount"].ToString());
+            }
+            return customer;
         }
 
         [WebMethod]
@@ -75,6 +85,28 @@ namespace Restaurants2GD
                 res_ls.Add(res);
             }
             return  res_ls;
+        }
+
+        [WebMethod]
+        public TransactionList GetTransactionsPerRestaurant(int restaurantKey, ref int count)
+        {           
+            DBUtils du = new DBUtils();
+            DataTable  dt= du.CallGetTransactionsPerRestaurant(restaurantKey,ref count);
+            List<Transaction> res_ls = new List<Transaction>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                Transaction res = new Transaction();
+                res.TransactionNumber = dr["TransactionNumber"].ToString();
+                res.RestaurantName = dr["RestaurantName"].ToString();
+                res.EmployeeName = dr["EmployeeName"].ToString();
+                res.Amount = dr["Amount"].ToString();
+                res.CreateDate= dr["CreateDate"].ToString();
+                res_ls.Add(res);
+            }
+            TransactionList trans_ls = new TransactionList();
+            trans_ls.Trans = res_ls;
+            trans_ls.ReturnCount = count;
+            return trans_ls;
         }
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using Restaurants2GD.Models;
+using DBAccess;
+using System.Data;
 
 namespace Restaurants2GD
 {
@@ -21,6 +24,32 @@ namespace Restaurants2GD
         public string HelloWorld()
         {
             return "Hello World";
+        }
+
+
+        [WebMethod]
+        public List<User> GetUsers()
+        {
+           
+            List<User> ls_user = new List<User>();
+            DBUtils du = new DBUtils();
+            DataTable dt= du.GetTableByQuery("select * from user");
+            foreach (DataRow dr in dt.Rows)
+            {
+                User user = new User();
+                user.UserName = dr["userName"].ToString();
+                ls_user.Add(user);
+            }
+
+            return ls_user;
+        }
+
+        [WebMethod]
+        public int Registration(string firstname, string lastname, string email, string phone, string password)
+        {
+            DBUtils du = new DBUtils();
+            int res = du.CallRegistration(firstname, lastname, email, phone, password);
+            return res;
         }
     }
 }

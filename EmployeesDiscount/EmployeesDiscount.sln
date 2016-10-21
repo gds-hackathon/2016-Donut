@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesDiscount", "EmployeesDiscount\EmployeesDiscount.csproj", "{E31A0EC3-F43A-4D8A-8E2C-F821F81336B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurants2GD", "Restaurants2GD\Restaurants2GD.csproj", "{B3A68426-EC32-4C50-B371-B0EC97A2A3AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBAccess", "DBAccess\DBAccess.csproj", "{65BCC31E-0802-479D-B6F2-B13102E0A0C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E31A0EC3-F43A-4D8A-8E2C-F821F81336B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E31A0EC3-F43A-4D8A-8E2C-F821F81336B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E31A0EC3-F43A-4D8A-8E2C-F821F81336B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E31A0EC3-F43A-4D8A-8E2C-F821F81336B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3A68426-EC32-4C50-B371-B0EC97A2A3AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A68426-EC32-4C50-B371-B0EC97A2A3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A68426-EC32-4C50-B371-B0EC97A2A3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A68426-EC32-4C50-B371-B0EC97A2A3AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65BCC31E-0802-479D-B6F2-B13102E0A0C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65BCC31E-0802-479D-B6F2-B13102E0A0C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65BCC31E-0802-479D-B6F2-B13102E0A0C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65BCC31E-0802-479D-B6F2-B13102E0A0C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

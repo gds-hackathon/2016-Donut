@@ -40,6 +40,7 @@ C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\Rest
 C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\Restaurants2GD\bin\MySql.Data.dll
 C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\Restaurants2GD\bin\DBAccess.pdb
 C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\Restaurants2GD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+<<<<<<< HEAD
 C:\Users\Administrator\Desktop\hackthon\2016-Donut\EmployeesDiscount\Restaurants2GD\obj\Debug\Restaurants2GD.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\hackthon\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\roslyn\csc.exe
 C:\Users\Administrator\Desktop\hackthon\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -90,3 +91,5 @@ E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\Microsoft.CodeDom.P
 E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\obj\Debug\Restaurants2GD.csprojResolveAssemblyReference.cache
 E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\obj\Debug\Restaurants2GD.dll
 E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\obj\Debug\Restaurants2GD.pdb
+=======
+>>>>>>> 574b3d4d6b848bc4bb49273c638a9855d484a5b5

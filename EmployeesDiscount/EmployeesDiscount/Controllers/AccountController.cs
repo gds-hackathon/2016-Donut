@@ -87,7 +87,7 @@ namespace EmployeesDiscount.Controllers
                 //Session["UserName"] = model.
                 //Response.Redirect("RestautantsController/RestautantsList");
                 RestautantsViewModel res = new RestautantsViewModel();
-                return new RedirectResult("/Restautants/RestautantsList");
+                return new RedirectResult("/Restaurants/Restaurants");
                 //return View(res);
             }
             else

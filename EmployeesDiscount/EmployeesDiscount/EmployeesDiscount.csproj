@@ -199,10 +199,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Image\pic6.jpg" />
-    <Content Include="Image\pic7.jpg" />
-    <Content Include="Image\pic8.jpg" />
-    <Content Include="Image\pic9.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\Settings.settings">
@@ -225,7 +221,7 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Views\Restaurants\RestaurantsView.cshtml" />
+    <Content Include="Views\Restaurants\Restaurants.cshtml" />
     <Content Include="Web References\DonutsWebService\Restaurant.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>

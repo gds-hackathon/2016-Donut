@@ -7,6 +7,7 @@ using Restaurants2GD.Models;
 using DBAccess;
 using System.Data;
 
+
 namespace Restaurants2GD
 {
     /// <summary>
@@ -58,6 +59,22 @@ namespace Restaurants2GD
             DBUtils du = new DBUtils();
             string res = du.CallLogin(userName,passwd);
             return res;
+        }
+
+        [WebMethod]
+        public List<Restaurant> GetRestaurant(int count)
+        {
+            DBUtils du = new DBUtils();
+           DataTable dt= du.CallGetRestaurantList(count);
+            List<Restaurant> res_ls = new List<Restaurant>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                Restaurant res = new Restaurant();               
+                res.Name =dr["name"].ToString();
+                res.Discount = dr["discount"].ToString();
+                res_ls.Add(res);
+            }
+            return res_ls;
         }
     }
 }

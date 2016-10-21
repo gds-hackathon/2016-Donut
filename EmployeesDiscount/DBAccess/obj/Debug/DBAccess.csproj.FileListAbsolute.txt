@@ -9,3 +9,8 @@ C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\DBAc
 C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\DBAccess\bin\Debug\MySql.Data.dll
 C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.dll
 C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.pdb
+C:\Users\Administrator\Desktop\hackthon\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\DBAccess.dll
+C:\Users\Administrator\Desktop\hackthon\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\DBAccess.pdb
+C:\Users\Administrator\Desktop\hackthon\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\MySql.Data.dll
+C:\Users\Administrator\Desktop\hackthon\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.dll
+C:\Users\Administrator\Desktop\hackthon\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.pdb

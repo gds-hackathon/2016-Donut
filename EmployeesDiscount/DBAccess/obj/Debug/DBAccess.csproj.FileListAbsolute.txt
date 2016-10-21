@@ -23,9 +23,6 @@ C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\DBAc
 C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\DBAccess\bin\Debug\MySql.Data.dll
 C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.dll
 C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.pdb
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 >>>>>>> fb32bcb3256591b872aee6f8ae969da5ab76535f
 >>>>>>> 03cf41eeebf6f93eeb84964ea0d8645dc6294aee
 C:\Users\Administrator\Desktop\hackthon\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\DBAccess.dll
@@ -34,9 +31,5 @@ C:\Users\Administrator\Desktop\hackthon\2016-Donut\EmployeesDiscount\DBAccess\bi
 C:\Users\Administrator\Desktop\hackthon\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.dll
 C:\Users\Administrator\Desktop\hackthon\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.pdb
 >>>>>>> 39e2cb080d9123a4c6c7cacf4975c7dbf9949fc7
-<<<<<<< HEAD
-=======
 >>>>>>> 0d40c9782457163c0504c55697bf967b599cac97
-=======
 >>>>>>> 175410fe19504b1a8d6dfcd2f71163d01db157da
->>>>>>> fb32bcb3256591b872aee6f8ae969da5ab76535f

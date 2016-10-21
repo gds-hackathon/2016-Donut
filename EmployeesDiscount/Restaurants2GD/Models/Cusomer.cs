@@ -7,6 +7,8 @@ namespace Restaurants2GD.Models
 {
     public class Cusomer:User
     {
+        public int Customerkey
+        { get; set; }
         public string FirstName
         { get; set; }
 

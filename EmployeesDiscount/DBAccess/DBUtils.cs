@@ -117,7 +117,7 @@ namespace DBAccess
             }
         }
 
-        public DataTable CallLogin(string username, string passwd)
+        public DataTable CallLogin(string username, string passwd,ref int customerkey)
         {
             try
             {
@@ -131,12 +131,13 @@ namespace DBAccess
 
                 MySqlParameter parInOutput = command.Parameters.Add("@customerkey", MySqlDbType.Int16);  //定义输出参数  
                 parInOutput.Direction = ParameterDirection.InputOutput;
-                parInOutput.Value = 0;
+                parInOutput.Value = customerkey;
 
-
+               
                 MySqlDataAdapter da = new MySqlDataAdapter(command);
                 DataTable dt = new DataTable();
-                da.Fill(dt); ;
+                da.Fill(dt);
+                customerkey = int.Parse(parInOutput.Value.ToString());
                 con.Close();
                 return dt;
             }
@@ -147,7 +148,7 @@ namespace DBAccess
             }
         }
 
-        public DataTable CallGetRestaurantList(int count)
+        public DataTable CallGetRestaurantList()
         {
 
             con.Open();
@@ -155,7 +156,7 @@ namespace DBAccess
             cmd.CommandType = CommandType.StoredProcedure;
             MySqlParameter parInOutput = cmd.Parameters.Add("@count", MySqlDbType.Int16);  //定义输出参数  
             parInOutput.Direction = ParameterDirection.InputOutput;  //参数类型为Output  
-            parInOutput.Value = count;
+            parInOutput.Value = 0;
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);

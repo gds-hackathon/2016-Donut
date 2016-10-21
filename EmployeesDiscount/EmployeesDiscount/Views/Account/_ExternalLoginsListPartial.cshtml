@@ -1,15 +1,14 @@
 ﻿@model EmployeesDiscount.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
-<h4>使用其他服务登录。</h4>
+<h4>User other service to login.</h4>
 <hr />
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
     if (loginProviders.Count() == 0) {
         <div>
             <p>
-                没有配置外部身份验证服务。有关设置此 ASP.NET 应用程序
-                以支持通过外部服务登录的详细信息，请参阅<a href="http://go.microsoft.com/fwlink/?LinkId=403804">此文</a>。
+                External authentication service is not configured. About setting this ASP.NET application to support by external service login details, please refer to <a href="http://go.microsoft.com/fwlink/?LinkId=403804">here</a>。
             </p>
         </div>
     }
@@ -19,7 +18,7 @@
             <div id="socialLoginList">
                 <p>
                     @foreach (AuthenticationDescription p in loginProviders) {
-                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="使用你的 @p.Caption 帐户登录">@p.AuthenticationType</button>
+                        <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Please Use your @p.Caption Account to Login">@p.AuthenticationType</button>
                     }
                 </p>
             </div>

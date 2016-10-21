@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\DBAccess.dll
 D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\DBAccess.pdb
 D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\MySql.Data.dll
@@ -10,3 +11,16 @@ E:\GD-DONUTS\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\MySql.Data.dll
 E:\GD-DONUTS\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.csprojResolveAssemblyReference.cache
 E:\GD-DONUTS\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.dll
 E:\GD-DONUTS\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.pdb
+=======
+d:\我的文档\visual studio 2015\Projects\WebApplicationTest\DBAccess\bin\Debug\DBAccess.dll
+d:\我的文档\visual studio 2015\Projects\WebApplicationTest\DBAccess\bin\Debug\DBAccess.pdb
+d:\我的文档\visual studio 2015\Projects\WebApplicationTest\DBAccess\bin\Debug\MySql.Data.dll
+d:\我的文档\visual studio 2015\Projects\WebApplicationTest\DBAccess\obj\Debug\DBAccess.csprojResolveAssemblyReference.cache
+d:\我的文档\visual studio 2015\Projects\WebApplicationTest\DBAccess\obj\Debug\DBAccess.dll
+d:\我的文档\visual studio 2015\Projects\WebApplicationTest\DBAccess\obj\Debug\DBAccess.pdb
+C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\DBAccess\bin\Debug\DBAccess.dll
+C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\DBAccess\bin\Debug\DBAccess.pdb
+C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\DBAccess\bin\Debug\MySql.Data.dll
+C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.dll
+C:\Users\Administrator\Desktop\hackthon\2016-Donut-master\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.pdb
+>>>>>>> 03cf41eeebf6f93eeb84964ea0d8645dc6294aee

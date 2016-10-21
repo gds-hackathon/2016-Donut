@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Restaurants2GD.Models
 {
-    public class Transaction
+    public class Transaction:Restaurant
     {
         public string TransactionNumber
         { get; set; }

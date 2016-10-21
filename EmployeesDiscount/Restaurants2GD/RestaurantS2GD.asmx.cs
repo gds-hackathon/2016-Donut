@@ -108,5 +108,43 @@ namespace Restaurants2GD
             trans_ls.ReturnCount = count;
             return trans_ls;
         }
+
+        [WebMethod]
+        public TransactionList GetTransactionsPerUser(int customerkey, ref int count)
+        {
+            DBUtils du = new DBUtils();
+            DataTable dt = du.CallGetTransactionsPerUser(customerkey, ref count);
+            List<Transaction> res_ls = new List<Transaction>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                Transaction res = new Transaction();
+                res.TransactionNumber = dr["TransactionNumber"].ToString();
+                res.RestaurantName = dr["RestaurantName"].ToString();
+                res.Discount = dr["RestaurantDiscount"].ToString();               
+                res.Amount = dr["Amount"].ToString();
+                res.CreateDate = dr["CreateDate"].ToString();
+                res_ls.Add(res);
+            }
+            TransactionList trans_ls = new TransactionList();
+            trans_ls.Trans = res_ls;
+            trans_ls.ReturnCount = count;
+            return trans_ls;
+        }
+
+        [WebMethod]
+        public int InsertPaymentTransaction(double amount, int restaurantkey, int customerkey)
+        {
+            DBUtils du = new DBUtils();
+            int res = du.CallPaymentTransaction(amount, restaurantkey, customerkey);
+            return res;
+        }
+
+        [WebMethod]
+        public int InsertRestaurant(string name,string discount)
+        {
+            DBUtils du = new DBUtils();
+            int res = du.CallInsertRestaurant(name,discount);
+            return res;
+        }
     }
 }

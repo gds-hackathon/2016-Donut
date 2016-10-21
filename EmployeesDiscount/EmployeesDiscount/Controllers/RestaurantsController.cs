@@ -8,12 +8,14 @@ using EmployeesDiscount.Models;
 
 namespace EmployeesDiscount.Controllers
 {
+    //[Authorize]
     public class RestaurantsController : Controller
     {
+         
         RestaurantS2GD webservice = new RestaurantS2GD();
-
+        //public RestaurantController() {}
         // GET: Restautants
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult Restaurants()
         {
             var restanrantslist = webservice.GetRestaurant();
@@ -22,7 +24,7 @@ namespace EmployeesDiscount.Controllers
         }
 
         // Get: /Restaurants/Payment
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult Payment(int Id)
         {
             Session["Restaurantkey"] = Id;
@@ -33,30 +35,45 @@ namespace EmployeesDiscount.Controllers
 
         // POST: /Restaurants/PaymentPost
         [HttpPost]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Payment(PaymentViewModel model, string returnUrl)
         {
-            var res = webservice.InsertPaymentTransaction(Convert.ToDouble(model.PaymentAmount), Convert.ToInt32(Session["Restaurantkey"]), Convert.ToInt32(Session["UserKey"]));
-            //ViewData["restanrantslist"] = restanrantslist;
-            if (res != 0)
+            if (Session["UserKey"] != null)
             {
-                return new RedirectResult("/Restaurants/Restaurants");
+                var res = webservice.InsertPaymentTransaction(Convert.ToDouble(model.PaymentAmount), Convert.ToInt32(Session["Restaurantkey"]), Convert.ToInt32(Session["UserKey"]));
+                //ViewData["restanrantslist"] = restanrantslist;
+                if (res != 0)
+                {
+                    return View("Success");
+                    //return new RedirectResult("/Restaurants/Success");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid order");
+                    return View(model);
+                }
             }
             else
             {
-                ModelState.AddModelError("", "Invalid order");
-                return View(model);
+                return new RedirectResult("/Account/Login");
             }
         }
 
         // GET: Orders
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult Orders()
         {
-            var orderlist = webservice.GetTransactionsPerUser(Convert.ToInt32(Session["UserKey"]));
-            ViewData["orderlist"] = orderlist;
-            return View();
+            if (Session["UserKey"] != null)
+            {
+                var orderlist = webservice.GetTransactionsPerUser(Convert.ToInt32(Session["UserKey"]));
+                ViewData["orderlist"] = orderlist;
+                return View();
+            }
+            else
+            {
+                return new RedirectResult("/Account/Login");
+            }
         }
 
         public ActionResult Success()

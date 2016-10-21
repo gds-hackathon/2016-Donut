@@ -86,6 +86,7 @@ namespace EmployeesDiscount.Controllers
             {
                 Session["UserName"] = result.FirstName + " " + result.LastName;
                 Session["UserKey"] = result.Customerkey;
+                Session["UserLevel"] = result.LevelKey;
                 //Response.Redirect("RestautantsController/RestautantsList");
                 RestautantsViewModel res = new RestautantsViewModel();
                 return new RedirectResult("/Restaurants/Restaurants");
@@ -393,12 +394,14 @@ namespace EmployeesDiscount.Controllers
 
         //
         // POST: /Account/LogOff
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session.Clear();
+            return new RedirectResult("/Home/Index");
         }
 
         //

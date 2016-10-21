@@ -18,13 +18,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Dinner", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @if (Session["UserLevel"] != null) {
+                    @Html.ActionLink("Dinner", "Index", "Home")}
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Orders", "Orders", "Restaurants")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

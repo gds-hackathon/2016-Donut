@@ -204,4 +204,3 @@ D:\Judy\Code\2016-Donut\EmployeesDiscount\EmployeesDiscount\bin\Microsoft.Owin.S
 D:\Judy\Code\2016-Donut\EmployeesDiscount\EmployeesDiscount\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Judy\Code\2016-Donut\EmployeesDiscount\EmployeesDiscount\obj\Debug\EmployeesDiscount.dll
 D:\Judy\Code\2016-Donut\EmployeesDiscount\EmployeesDiscount\obj\Debug\EmployeesDiscount.pdb
-D:\Judy\Code\2016-Donut\EmployeesDiscount\EmployeesDiscount\obj\Debug\EmployeesDiscount.csprojResolveAssemblyReference.cache

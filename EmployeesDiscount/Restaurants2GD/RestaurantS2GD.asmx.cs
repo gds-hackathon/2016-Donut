@@ -70,6 +70,7 @@ namespace Restaurants2GD
                 customer.Mobile = dr["Mobile"].ToString();
                 customer.BalanceAmount = double.Parse(dr["Balance"].ToString());
                 customer.FrozenAmount = double.Parse(dr["FrozenAmount"].ToString());
+                customer.LevelKey = int.Parse(dr["levelkey"].ToString());
             }
             return customer;
         }

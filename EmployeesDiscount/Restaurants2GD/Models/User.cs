@@ -13,7 +13,7 @@ namespace Restaurants2GD.Models
         public string PassWord
         { get; set; }
 
-        public string LevelKey
+        public int LevelKey
         { get; set; }
     }
 }

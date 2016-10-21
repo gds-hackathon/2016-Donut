@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeesDiscount", "EmployeesDiscount\EmployeesDiscount.csproj", "{E31A0EC3-F43A-4D8A-8E2C-F821F81336B4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B3A68426-EC32-4C50-B371-B0EC97A2A3AF} = {B3A68426-EC32-4C50-B371-B0EC97A2A3AF}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurants2GD", "Restaurants2GD\Restaurants2GD.csproj", "{B3A68426-EC32-4C50-B371-B0EC97A2A3AF}"
 EndProject

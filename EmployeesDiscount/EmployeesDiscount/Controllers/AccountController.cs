@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EmployeesDiscount.Models;
+using EmployeesDiscount.DonutsWebService;
+using EmployeesDiscount.Common;
 
 namespace EmployeesDiscount.Controllers
 {
@@ -17,6 +19,7 @@ namespace EmployeesDiscount.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        RestaurantS2GD webservice = new RestaurantS2GD();
         
 
         public AccountController()
@@ -152,7 +155,9 @@ namespace EmployeesDiscount.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = objectGD.Registration(model.FirstName, model.LastName, model.Email, model.PhoneNumber, model.Password);
+                CommonMethod com = new CommonMethod();
+                model.Password = com.Encryption(model.Password);
+                var result = webservice.Registration(model.FirstName, model.LastName, model.Email, model.PhoneNumber, model.Password);
                 if (result > 0)
                 {
                     // 有关如何启用帐户确认和密码重置的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=320771

@@ -17,6 +17,7 @@ namespace EmployeesDiscount.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        
 
         public AccountController()
         {
@@ -151,12 +152,9 @@ namespace EmployeesDiscount.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                var result = objectGD.Registration(model.FirstName, model.LastName, model.Email, model.PhoneNumber, model.Password);
+                if (result > 0)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
                     // 有关如何启用帐户确认和密码重置的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=320771
                     // 发送包含此链接的电子邮件
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -165,7 +163,7 @@ namespace EmployeesDiscount.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                AddErrors(result);
+                
             }
 
             // 如果我们进行到这一步时某个地方出错，则重新显示表单

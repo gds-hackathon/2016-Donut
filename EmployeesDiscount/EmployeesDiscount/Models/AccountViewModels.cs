@@ -65,19 +65,32 @@ namespace EmployeesDiscount.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
         [EmailAddress]
-        [Display(Name = "电子邮件")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} 必须至少包含 {2} 个字符。", MinimumLength = 6)]
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "{0} must include {2} characters", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "密码")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "确认密码")]
-        [Compare("Password", ErrorMessage = "密码和确认密码不匹配。")]
+        [Display(Name = "Confirm Password")]
+        [Compare("Password", ErrorMessage = "Password and confirm password does not match")]
         public string ConfirmPassword { get; set; }
     }
 

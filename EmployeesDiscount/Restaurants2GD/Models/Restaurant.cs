@@ -7,6 +7,8 @@ namespace Restaurants2GD.Models
 {
     public class Restaurant
     {
+        public int Restaurantkey
+        { get; set; }
         public string Name
         { get; set; }
 

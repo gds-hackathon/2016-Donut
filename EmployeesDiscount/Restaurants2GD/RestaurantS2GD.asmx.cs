@@ -58,9 +58,12 @@ namespace Restaurants2GD
         {
             Cusomer customer = new Cusomer();
             DBUtils du = new DBUtils();
-            DataTable dt = du.CallLogin(userName,passwd);
+             int  customerkey=0;
+
+            DataTable dt = du.CallLogin(userName,passwd,ref customerkey);
             foreach (DataRow dr in dt.Rows)
             {
+                customer.Customerkey = customerkey;
                 customer.FirstName = dr["FirstName"].ToString();
                 customer.LastName = dr["LastName"].ToString();
                 customer.Email = dr["Email"].ToString();
@@ -72,14 +75,15 @@ namespace Restaurants2GD
         }
 
         [WebMethod]
-        public List<Restaurant> GetRestaurant(int count)
+        public List<Restaurant> GetRestaurant()
         {
             DBUtils du = new DBUtils();
-           DataTable dt= du.CallGetRestaurantList(count);
+           DataTable dt= du.CallGetRestaurantList();
             List<Restaurant> res_ls = new List<Restaurant>();
             foreach (DataRow dr in dt.Rows)
             {
-                Restaurant res = new Restaurant();               
+                Restaurant res = new Restaurant();
+                res.Restaurantkey =int.Parse(dr["Restaurantkey"].ToString());             
                 res.Name =dr["name"].ToString();
                 res.Discount = dr["discount"].ToString();
                 res_ls.Add(res);
@@ -88,14 +92,16 @@ namespace Restaurants2GD
         }
 
         [WebMethod]
-        public TransactionList GetTransactionsPerRestaurant(int restaurantKey, ref int count)
+        public TransactionList GetTransactionsPerRestaurant(int restaurantKey)
         {           
             DBUtils du = new DBUtils();
+            int count = 0;
             DataTable  dt= du.CallGetTransactionsPerRestaurant(restaurantKey,ref count);
             List<Transaction> res_ls = new List<Transaction>();
             foreach (DataRow dr in dt.Rows)
             {
                 Transaction res = new Transaction();
+                //res.Restaurantkey = int.Parse(dr["Restaurantkey"].ToString());
                 res.TransactionNumber = dr["TransactionNumber"].ToString();
                 res.RestaurantName = dr["RestaurantName"].ToString();
                 res.EmployeeName = dr["EmployeeName"].ToString();
@@ -110,9 +116,10 @@ namespace Restaurants2GD
         }
 
         [WebMethod]
-        public TransactionList GetTransactionsPerUser(int customerkey, ref int count)
+        public TransactionList GetTransactionsPerUser(int customerkey)
         {
             DBUtils du = new DBUtils();
+            int count = 0;
             DataTable dt = du.CallGetTransactionsPerUser(customerkey, ref count);
             List<Transaction> res_ls = new List<Transaction>();
             foreach (DataRow dr in dt.Rows)

@@ -79,19 +79,18 @@ namespace EmployeesDiscount.Controllers
 
             // 这不会计入到为执行帐户锁定而统计的登录失败次数中
             // 若要在多次输入错误密码的情况下触发帐户锁定，请更改为 shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            CommonMethod com = new CommonMethod();
+            model.Password = com.Encryption(model.Password);
+            var result = webservice.Login(model.PhoneNumber, model.Password);
+            if (Convert.ToInt32(result) > 0)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "无效的登录尝试。");
-                    return View(model);
+                //Session["UserName"] = model.
+                return RedirectToLocal(returnUrl);
+            }
+            else
+            {
+                ModelState.AddModelError("", "无效的登录尝试。");
+                return View(model);
             }
         }
 
@@ -165,7 +164,7 @@ namespace EmployeesDiscount.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "确认你的帐户", "请通过单击 <a href=\"" + callbackUrl + "\">這裏</a>来确认你的帐户");
-
+                    Session["UserName"] = model.FirstName + " "+ model.LastName;
                     return RedirectToAction("Index", "Home");
                 }
                 

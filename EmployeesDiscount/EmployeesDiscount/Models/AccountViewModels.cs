@@ -49,17 +49,17 @@ namespace EmployeesDiscount.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "电子邮件")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Phone Number")]
+        [Phone]
+        public string PhoneNumber { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "密码")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "记住我?")]
-        public bool RememberMe { get; set; }
+        //[Display(Name = "记住我?")]
+        //public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel

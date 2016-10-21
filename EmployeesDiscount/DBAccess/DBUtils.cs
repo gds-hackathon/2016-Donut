@@ -117,5 +117,34 @@ namespace DBAccess
             }
         }
 
+        public string CallLogin(string username,string passwd)
+        {
+            try
+            {
+                con.Open(); ;
+                MySqlCommand command = new MySqlCommand("login", con);
+
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@username", username);
+                command.Parameters.AddWithValue("@passwd", passwd);
+
+                MySqlParameter parOutput = command.Parameters.Add("@customerkey", MySqlDbType.Int16);  //定义输出参数  
+                parOutput.Direction = ParameterDirection.Output;  //参数类型为Output  
+               // MySqlParameter parReturn = new MySqlParameter("@return", SqlDbType.Int);
+               // parReturn.Direction = ParameterDirection.ReturnValue;   //参数类型为ReturnValue                     
+               // command.Parameters.Add(parReturn);
+                
+                 command.ExecuteNonQuery();
+                string res = parOutput.Value.ToString();
+                con.Close();
+                return res;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("SQL Error" + ex.Message.ToString());
+                return "0";
+            }
+        }
     }
 }

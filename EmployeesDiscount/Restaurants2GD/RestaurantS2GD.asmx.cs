@@ -74,7 +74,7 @@ namespace Restaurants2GD
                 res.Discount = dr["discount"].ToString();
                 res_ls.Add(res);
             }
-            return res_ls;
+            return  res_ls;
         }
     }
 }

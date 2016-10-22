@@ -108,6 +108,7 @@ namespace Restaurants2GD
                 res.EmployeeName = dr["EmployeeName"].ToString();
                 res.Amount = dr["Amount"].ToString();
                 res.CreateDate= dr["CreateDate"].ToString();
+                res.Discount = dr["Discount"].ToString();
                 res_ls.Add(res);
             }
             TransactionList trans_ls = new TransactionList();

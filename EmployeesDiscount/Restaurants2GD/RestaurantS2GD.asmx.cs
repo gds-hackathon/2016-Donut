@@ -155,5 +155,26 @@ namespace Restaurants2GD
             int res = du.CallInsertRestaurant(name,discount);
             return res;
         }
+
+        [WebMethod]
+        public double Settlement(int restaurantkey)
+        {
+            double settlement = 0;
+            try
+            {               
+                DBUtils du = new DBUtils();
+                DataTable dt = du.CallSettlementByRestaurantkey(restaurantkey);
+                if (dt.Rows.Count > 0)
+                {
+                    settlement = double.Parse(dt.Rows[0][0].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("messge:" + ex.ToString());
+                settlement = 0;
+            }
+            return settlement;
+        }
     }
 }

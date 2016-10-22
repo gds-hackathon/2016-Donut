@@ -10,5 +10,8 @@ D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\DBAccess.pdb
 D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\MySql.Data.dll
 D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.dll
 D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.pdb
+<<<<<<< HEAD
 D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.csprojResolveAssemblyReference.cache
 >>>>>>> 2c4f79ddf8e1604d08f46612560d7b96a9445e8c
+=======
+>>>>>>> 45010add7d4458277939e3706d53c8d123177ef7

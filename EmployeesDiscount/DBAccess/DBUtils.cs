@@ -272,5 +272,24 @@ namespace DBAccess
 
 
         }
+
+        public DataTable CallSettlementByRestaurantkey(int restaurantkey)
+        {
+
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand("settlement", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            MySqlParameter parIn1 = cmd.Parameters.Add("@restaurantkey", MySqlDbType.Int16);
+            parIn1.Direction = ParameterDirection.Input;
+            parIn1.Value = restaurantkey;
+        
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            con.Close();            
+            return dt;
+
+        }
+
     }
 }

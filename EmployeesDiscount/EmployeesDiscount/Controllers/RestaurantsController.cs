@@ -23,6 +23,23 @@ namespace EmployeesDiscount.Controllers
             return View("Restaurants");
         }
 
+        [HttpPost]
+        public ActionResult Restaurant(RestautantViewModel model)
+        {
+            var res = webservice.InsertRestaurant(model.RestautantName, model.Discount);
+            ViewData["res"] = res;
+            return new RedirectResult("/Restaurants/Restaurants");
+        }
+
+        [HttpGet]
+        public ActionResult Restaurant()
+        {
+            var restanrantslist = webservice.GetRestaurant();
+            ViewData["restanrantslist"] = restanrantslist;
+            return View("Restaurant");
+            //return View();
+        }
+
         // Get: /Restaurants/Payment
         //[AllowAnonymous]
         public ActionResult Payment(int Id)
@@ -74,6 +91,14 @@ namespace EmployeesDiscount.Controllers
             {
                 return new RedirectResult("/Account/Login");
             }
+        }
+
+        [HttpPost]
+        public ActionResult Settlement(int Id)
+        {
+            //var res = webservice.InsertRestaurant(model.RestautantName, model.Discount);
+            //ViewData["res"] = res;
+            return new RedirectResult("/Restaurants/Restaurants");
         }
 
         public ActionResult Success()

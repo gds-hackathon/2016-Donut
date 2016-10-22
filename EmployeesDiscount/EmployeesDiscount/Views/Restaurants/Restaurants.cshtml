@@ -34,9 +34,16 @@
                                     <div class="panel-body">
                                         Discount: @dts[i].Discount
                                     </div>
-                                    <a href="/Restaurants/Payment?id=@dts[i].Restaurantkey">Pay Bill Now</a>
-                                    
-
+                                    <div class="panel-body">
+                                        @if(Convert.ToInt32(Session["UserLevel"]) != 1)
+                                        {
+                                        <a href="/Restaurants/Payment?id=@dts[i].Restaurantkey">Pay Bill Now</a>
+                                        }
+                                        else
+                                        {
+                                        <a href="/Restaurants/Settlement?id=@dts[i].Restaurantkey">Settlement</a>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         }

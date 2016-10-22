@@ -23,4 +23,17 @@ namespace EmployeesDiscount.Models
         [Display(Name = "Payment Amount")]
         public string PaymentAmount { get; set; }
     }
+
+    public class RestautantViewModel
+    {
+        [Required]
+        [Display(Name = "RestautantName")]
+        [Phone]
+        public string RestautantName { get; set; }
+
+        [Required]
+        [Display(Name = "Discount")]
+        public string Discount { get; set; }
+
+    }
 }

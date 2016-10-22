@@ -44,6 +44,8 @@ namespace EmployeesDiscount.DonutsWebService {
         
         private System.Threading.SendOrPostCallback InsertRestaurantOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SettlementOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -102,6 +104,9 @@ namespace EmployeesDiscount.DonutsWebService {
         
         /// <remarks/>
         public event InsertRestaurantCompletedEventHandler InsertRestaurantCompleted;
+        
+        /// <remarks/>
+        public event SettlementCompletedEventHandler SettlementCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Registration", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -321,6 +326,35 @@ namespace EmployeesDiscount.DonutsWebService {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Settlement", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double Settlement(int restaurantkey) {
+            object[] results = this.Invoke("Settlement", new object[] {
+                        restaurantkey});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SettlementAsync(int restaurantkey) {
+            this.SettlementAsync(restaurantkey, null);
+        }
+        
+        /// <remarks/>
+        public void SettlementAsync(int restaurantkey, object userState) {
+            if ((this.SettlementOperationCompleted == null)) {
+                this.SettlementOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSettlementOperationCompleted);
+            }
+            this.InvokeAsync("Settlement", new object[] {
+                        restaurantkey}, this.SettlementOperationCompleted, userState);
+        }
+        
+        private void OnSettlementOperationCompleted(object arg) {
+            if ((this.SettlementCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SettlementCompleted(this, new SettlementCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -445,7 +479,7 @@ namespace EmployeesDiscount.DonutsWebService {
         
         private string passWordField;
         
-        private string levelKeyField;
+        private int levelKeyField;
         
         /// <remarks/>
         public string UserName {
@@ -468,7 +502,7 @@ namespace EmployeesDiscount.DonutsWebService {
         }
         
         /// <remarks/>
-        public string LevelKey {
+        public int LevelKey {
             get {
                 return this.levelKeyField;
             }
@@ -804,6 +838,32 @@ namespace EmployeesDiscount.DonutsWebService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
+    public delegate void SettlementCompletedEventHandler(object sender, SettlementCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SettlementCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SettlementCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
             }
         }
     }

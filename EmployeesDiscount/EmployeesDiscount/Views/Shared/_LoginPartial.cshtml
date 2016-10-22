@@ -10,7 +10,7 @@
             @Html.ActionLink("Hello，" + Session["UserName"] + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li>
-            @Html.ActionLink("Balance:" + Session["Balance"], "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink("Cost:" + Session["Balance"], "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
     </ul>

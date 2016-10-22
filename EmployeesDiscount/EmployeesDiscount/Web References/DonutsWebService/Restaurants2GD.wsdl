@@ -54,7 +54,7 @@
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="PassWord" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="LevelKey" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LevelKey" type="s:int" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetRestaurant">
@@ -162,6 +162,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="Settlement">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="restaurantkey" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SettlementResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SettlementResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="RegistrationSoapIn">
@@ -206,6 +220,12 @@
   <wsdl:message name="InsertRestaurantSoapOut">
     <wsdl:part name="parameters" element="tns:InsertRestaurantResponse" />
   </wsdl:message>
+  <wsdl:message name="SettlementSoapIn">
+    <wsdl:part name="parameters" element="tns:Settlement" />
+  </wsdl:message>
+  <wsdl:message name="SettlementSoapOut">
+    <wsdl:part name="parameters" element="tns:SettlementResponse" />
+  </wsdl:message>
   <wsdl:portType name="RestaurantS2GDSoap">
     <wsdl:operation name="Registration">
       <wsdl:input message="tns:RegistrationSoapIn" />
@@ -234,6 +254,10 @@
     <wsdl:operation name="InsertRestaurant">
       <wsdl:input message="tns:InsertRestaurantSoapIn" />
       <wsdl:output message="tns:InsertRestaurantSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Settlement">
+      <wsdl:input message="tns:SettlementSoapIn" />
+      <wsdl:output message="tns:SettlementSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="RestaurantS2GDSoap" type="tns:RestaurantS2GDSoap">
@@ -301,6 +325,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Settlement">
+      <soap:operation soapAction="http://tempuri.org/Settlement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="RestaurantS2GDSoap12" type="tns:RestaurantS2GDSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -360,6 +393,15 @@
     </wsdl:operation>
     <wsdl:operation name="InsertRestaurant">
       <soap12:operation soapAction="http://tempuri.org/InsertRestaurant" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Settlement">
+      <soap12:operation soapAction="http://tempuri.org/Settlement" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

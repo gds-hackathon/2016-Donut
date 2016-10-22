@@ -94,11 +94,11 @@ namespace EmployeesDiscount.Controllers
         }
 
         [HttpPost]
-        public ActionResult Settlement(int Id)
+        public ActionResult Settlement(int id)
         {
-            //var res = webservice.InsertRestaurant(model.RestautantName, model.Discount);
-            //ViewData["res"] = res;
-            return new RedirectResult("/Restaurants/Restaurants");
+            var res = webservice.GetTransactionsPerRestaurant(id);
+            ViewData["SettlementList"] = res;
+            return View();
         }
 
         public ActionResult Success()

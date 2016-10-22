@@ -227,6 +227,8 @@
     <Content Include="Views\Restaurants\Payment.cshtml" />
     <Content Include="Views\Restaurants\Orders.cshtml" />
     <Content Include="Views\Restaurants\Success.cshtml" />
+    <Content Include="Views\Restaurants\Restaurant.cshtml" />
+    <Content Include="Views\Restaurants\Settlement.cshtml" />
     <None Include="Web References\DonutsWebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

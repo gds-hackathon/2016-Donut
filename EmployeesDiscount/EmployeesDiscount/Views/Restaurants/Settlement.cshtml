@@ -1,0 +1,67 @@
+﻿@using EmployeesDiscount.DonutsWebService
+@using EmployeesDiscount.Models
+@{
+    ViewBag.Title = "Settlement";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Customer
+                        </th>
+                        <th>
+                            Amount
+                        </th>
+                        <th>
+                            PayDay
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        TransactionList dts = (TransactionList)ViewData["SettlementList"];
+                        if (dts.Trans.Count() < 1 && dts == null)
+                        {
+                            <p>
+                                ● No Orders. <br />
+                            </p>
+                        }
+                        else
+                        {
+
+                            for (int i = 0, j = 0; i < dts.Trans.Count(); i++)
+                            {
+                                j++;
+                                //string path = "newsDetail.aspx?type=6&id=" + dt.Rows[i]["news_id"];
+                                <tr class="success">
+                                    <td>
+                                        @j
+                                    </td>
+                                    <td>
+                                        @dts.Trans[i].EmployeeName
+                                    </td>
+                                    <td>
+                                        @dts.Trans[i].Amount
+                                    </td>
+                                    <td>
+                                        @dts.Trans[i].CreateDate
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

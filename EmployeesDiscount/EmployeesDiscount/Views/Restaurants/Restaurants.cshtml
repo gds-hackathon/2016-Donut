@@ -1,6 +1,5 @@
 ﻿@using EmployeesDiscount.DonutsWebService
-@using EmployeesDiscount.Models
-@model LoginViewModel
+
 @{
     ViewBag.Title = "Restaurant";
 }
@@ -34,9 +33,22 @@
                                     <div class="panel-body">
                                         Discount: @dts[i].Discount
                                     </div>
+<<<<<<< HEAD
                                     <a href="/Restaurants/Payment?id=@dts[i].Restaurantkey"><input type="button" value="Pay Bill Now" /></a>
                                     
 
+=======
+                                    <div class="panel-body">
+                                        @if(Convert.ToInt32(Session["UserLevel"]) != 1)
+                                        {
+                                        <a href="/Restaurants/Payment?id=@dts[i].Restaurantkey">Pay Bill Now</a>
+                                        }
+                                        else
+                                        {
+                                        <a href="/Restaurants/Settlement?id=@dts[i].Restaurantkey">Settlement</a>
+                                        }
+                                    </div>
+>>>>>>> 2c4f79ddf8e1604d08f46612560d7b96a9445e8c
                                 </div>
                             </div>
                         }

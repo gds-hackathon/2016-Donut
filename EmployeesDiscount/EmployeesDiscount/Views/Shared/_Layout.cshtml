@@ -18,8 +18,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @if (Session["UserLevel"] != null) {
-                    @Html.ActionLink("Dinner", "Index", "Home")}
+                @if (Convert.ToInt32(Session["UserLevel"]) != 1) {
+                    @Html.ActionLink("Dinner", "Restaurant", "Restaurants")}
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

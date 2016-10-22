@@ -21,3 +21,17 @@ E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\Microsoft.CodeDom.P
 E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\obj\Debug\Restaurants2GD.csprojResolveAssemblyReference.cache
 E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\obj\Debug\Restaurants2GD.dll
 E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\obj\Debug\Restaurants2GD.pdb
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\Microsoft.Web.Infrastructure.dll
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\Newtonsoft.Json.dll
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\Swashbuckle.Core.dll
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.IdentityModel.Tokens.Jwt.dll
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.Net.Http.Formatting.dll
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.Web.Http.dll
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.Web.Http.WebHost.dll
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\WebActivatorEx.dll
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\Newtonsoft.Json.xml
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.IdentityModel.Tokens.Jwt.xml
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.Net.Http.Formatting.xml
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.Web.Http.xml
+E:\GD-DONUTS\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.Web.Http.WebHost.xml

@@ -93,12 +93,21 @@ namespace EmployeesDiscount.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Settlement(int id)
         {
             var res = webservice.GetTransactionsPerRestaurant(id);
             ViewData["SettlementList"] = res;
+            Session["RestautantName"] = res.Trans[0].RestaurantName;
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult GetSettlement(int id)
+        {
+            //var res = webservice.GetTransactionsPerRestaurant(id);
+            TempData["Message"] = string.Format("Restaurant {0} save for {1} amount", "a", "100");
+            return new RedirectResult("/Restaurants/Settlement");
         }
 
         public ActionResult Success()

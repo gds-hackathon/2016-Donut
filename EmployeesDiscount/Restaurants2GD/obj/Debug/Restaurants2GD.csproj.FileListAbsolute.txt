@@ -21,3 +21,17 @@ D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\Microsoft.CodeDom.P
 D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\obj\Debug\Restaurants2GD.csprojResolveAssemblyReference.cache
 D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\obj\Debug\Restaurants2GD.dll
 D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\obj\Debug\Restaurants2GD.pdb
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\Microsoft.Azure.AppService.ApiApps.Service.dll
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\Microsoft.Web.Infrastructure.dll
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\Newtonsoft.Json.dll
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\Swashbuckle.Core.dll
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.Net.Http.Formatting.dll
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.Web.Http.dll
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.Web.Http.WebHost.dll
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\WebActivatorEx.dll
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\Newtonsoft.Json.xml
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.Net.Http.Formatting.xml
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.Web.Http.xml
+D:\Judy\Code\2016-Donut\EmployeesDiscount\Restaurants2GD\bin\System.Web.Http.WebHost.xml

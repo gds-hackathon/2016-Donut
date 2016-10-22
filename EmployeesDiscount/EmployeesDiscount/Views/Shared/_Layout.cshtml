@@ -18,8 +18,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @if (Convert.ToInt32(Session["UserLevel"]) != 1) {
-                    @Html.ActionLink("Dinner", "Restaurant", "Restaurants")}
 
             </div>
             <div class="navbar-collapse collapse">
@@ -28,7 +26,16 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Orders", "Orders", "Restaurants")</li>
-                </ul>
+                    <li>
+                        @{
+                            if (Convert.ToInt32(Session["UserLevel"]) == 1)
+                            {
+                                @Html.ActionLink("Dinner", "Restaurant", "Restaurants")
+                            }
+                        }
+                    </li>
+
+</ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

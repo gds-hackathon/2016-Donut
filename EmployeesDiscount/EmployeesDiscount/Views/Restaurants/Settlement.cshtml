@@ -1,7 +1,7 @@
 ﻿@using EmployeesDiscount.DonutsWebService
 @using EmployeesDiscount.Models
 @{
-    ViewBag.Title = "Settlement";
+    ViewBag.Title = "Settlement for "+ Session["RestautantName"];
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -20,6 +20,9 @@
                         </th>
                         <th>
                             Amount
+                        </th>
+                        <th>
+                            Discount
                         </th>
                         <th>
                             PayDay
@@ -53,6 +56,9 @@
                                         @dts.Trans[i].Amount
                                     </td>
                                     <td>
+                                        @dts.Trans[i].Discount
+                                    </td>
+                                    <td>
                                         @dts.Trans[i].CreateDate
                                     </td>
                                 </tr>
@@ -62,6 +68,10 @@
 
                 </tbody>
             </table>
+        </div>
+        <input type="button" data-toggle="modal" data-target="#popup_id" value="Settlement" />
+        <div>
+            @TempData["Message"]
         </div>
     </div>
 </div>

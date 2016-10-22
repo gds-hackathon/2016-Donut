@@ -3,4 +3,3 @@ D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\DBAccess.pdb
 D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\bin\Debug\MySql.Data.dll
 D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.dll
 D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.pdb
-D:\Judy\Code\2016-Donut\EmployeesDiscount\DBAccess\obj\Debug\DBAccess.csprojResolveAssemblyReference.cache
